@@ -1,0 +1,71 @@
+import UIKit
+
+func myFunction() {
+    print("------------------------------")
+}
+
+// var is MUTABLE
+var greeting:String = "Hello, "
+
+// let is IMMUTABLE
+let names = "Viraj"
+
+greeting = "in Xcode playground!"
+
+// define list stype using brackets []
+let listOfPeople: [String] = ["Viraj","Veer","V"]
+
+myFunction()
+
+for name in listOfPeople {
+    //String interpolation using "Hello \() -- \()"
+    print("Hello, \(name) \(greeting)!")
+}
+
+print("\(names) likes to Code")
+
+
+
+
+
+/*
+ Everybody does not likes to code perhaps we consider people and their hobbies
+ 
+ using structs...
+ */
+
+struct PersonWithHobby {
+    let name: String
+    let hobby: String
+}
+
+let people:PersonWithHobby = PersonWithHobby(name: "Viraj", hobby: "Dance")
+
+let peoples:[PersonWithHobby] = [
+    PersonWithHobby(name: "Viraj", hobby: "Travel"),
+    PersonWithHobby(name: "Veer", hobby: "Code"),
+    PersonWithHobby(name: "V", hobby: "Games"),
+    PersonWithHobby(name: "Void", hobby: "Nothing"),
+    PersonWithHobby(name: "Empty", hobby: ""),
+]
+
+myFunction()
+
+for p in peoples {
+    print("\(p.name.uppercased()) likes to \(p.hobby).")
+}
+
+
+// optionals
+// [1,2,10,-50,7,-3]
+
+var x: Int = 7      // cannot store nil
+var y: Int? = 10    // can store nil because we used Int? as datatype
+
+x = 12345
+// x = nil --> it will not work because value is not null safe
+
+y = -18
+y = nil
+
+
