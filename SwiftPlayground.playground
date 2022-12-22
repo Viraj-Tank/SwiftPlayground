@@ -69,3 +69,39 @@ y = -18
 y = nil
 
 
+struct PersonWithOptionalHobby {
+    let name: String
+    let hobby: String?
+}
+
+
+let peoplesWithOptHobby : [PersonWithOptionalHobby] = [
+    PersonWithOptionalHobby(name: "Viraj", hobby: "Travel"),
+    PersonWithOptionalHobby(name: "Veer", hobby: "Code"),
+    PersonWithOptionalHobby(name: "V", hobby: "Games"),
+    PersonWithOptionalHobby(name: "Void", hobby: nil),
+    PersonWithOptionalHobby(name: "Empty", hobby: nil),
+]
+
+myFunction()
+for p in peoplesWithOptHobby {
+    
+    // IF ELSE STATEMENT
+    /* if p.hobby == nil || p.hobby == "" {
+        print("\(p.name) has no hobbies.")
+    } else {
+        print("\(p.name.capitalized) likes to \(String(describing: p.hobby)).")
+    } */
+    
+    
+    // IF LET ELSE STATEMENT
+    if let hobby = p.hobby {
+        //Execute if p.hobby != nil
+        print("\(p.name.capitalized) likes to \(hobby).")
+    } else {
+        print("\(p.name) has no hobbies.")
+    }
+    
+    
+}
+
