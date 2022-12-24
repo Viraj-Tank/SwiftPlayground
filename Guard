@@ -1,0 +1,20 @@
+import Foundation
+
+let x1 = true
+let x2 = false
+
+func guardExample(expr: Bool,str: String) {
+    guard(expr) else {
+        // execute this closure if expr == false
+        print("We are here because the expression \(str) is false")
+        return
+    }
+    print("Have a nice day!")
+}
+
+guardExample(expr:x1,str:"x1")
+guardExample(expr:x2,str:"x2")
+guardExample(expr:1+1 == 3,str:"1+1 = 3")
+guardExample(expr:1+1 == 2,str:"1+1 = 2")
+
+print("guard..else only executes its closure if the expression is false")
