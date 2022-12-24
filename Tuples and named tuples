@@ -1,0 +1,24 @@
+import Foundation
+
+// this is tuple
+var address = ("John Doe","123 St","Downtown","RU",23)
+
+print(address)
+print(address.0)
+print(address.1)
+print(address.2)
+print(address.3)
+print(address.4)
+
+
+// NAMED TUPLE
+var addr = (name:"Will Smith",street:"123 St",town:"Downtown",country:"RUSSIA",age:24)
+
+print(addr)
+print(addr.name)
+print(addr.street)
+print(addr.town)
+print(addr.country)
+print(addr.age)
+
+print("\(addr.name) is \(addr.age) years old. He lives in \(addr.town), \(addr.country).")
