@@ -30,3 +30,14 @@ let myThirdClosureWithReturnType : (String) -> (String) = {
     return values;
 }
 print(myThirdClosureWithReturnType("String data passed!"))
+
+
+
+let tableClosure: (Int,Int) -> () =
+{
+    (val1, val2) in for val2 in 1...val1 {
+        print("\(val1) * \(val2) = \(val1 * val2)")
+    }
+}
+
+tableClosure(10,10)
