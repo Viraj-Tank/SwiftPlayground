@@ -1,0 +1,32 @@
+let myClosure = {
+    print("This is first closure!")
+}
+myClosure()
+
+
+
+
+// we need to pass String inside function for this closure
+let mySecondClosure : (String)->() = {
+    data in print("Inside closure: \(data)")
+}
+mySecondClosure("String data passed!")
+
+
+
+
+// we need to pass String or nil is also acceptable inside function for this closure
+let mySecondClosureNilSafe : (String?)->() = {
+    data in print("Inside closure: \(data)")
+}
+mySecondClosureNilSafe(nil)
+
+
+
+
+
+let myThirdClosureWithReturnType : (String) -> (String) = {
+    data in let values =  "Inside return type closure \(data)"
+    return values;
+}
+print(myThirdClosureWithReturnType("String data passed!"))
