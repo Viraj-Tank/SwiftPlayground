@@ -840,22 +840,27 @@ var htmlString =
 """
 
 // split it by line by line
-
 var lines = htmlString.components(separatedBy: "\n")
 
-//print(lines[0])
-//print(lines[2])
-//print(lines[1])
-
+var colorSwiftCode = ""
+var colorListCode = ""
 
 // get colorname rgb code when lines contains background
 for i in 0..<lines.count {
-    if lines[i].contains("background") {
+    if lines[i].contains("background") && i + 3 < lines.count {
         let colorName = getColorName(line: lines[i + 1])
         let rgbCode = getRGBCode(line: lines[i + 3])
+        
+        let lineOfCode = "static let \(colorName) = \(rgbCode)\n"
+        colorSwiftCode += lineOfCode
+        colorListCode += "\t.\(colorName),\n"
     }
 }
 
+colorListCode =  String(colorListCode.dropLast())
+
+//print(colorSwiftCode)
+print(colorListCode)
 
 
 func getColorName(line: String) -> String {
@@ -875,15 +880,19 @@ func getColorName(line: String) -> String {
     return result
 }
 
-
-
 // Color(red: 119/255.0, green: 136/255.0, blue: 153/255.0)
 func getRGBCode(line: String) -> String {
 //    <td style="background: #FFFFFF;">&nbsp;</td>
     var rgbColor = line
 //    (255,255,255)
-    rgbColor = rgbColor.replacingOccurrences(of: "<td>(", with: "")
-    rgbColor = rgbColor.replacingOccurrences(of: ")</td>", with: "")
+    rgbColor = removeTD(str: rgbColor)
+    rgbColor = rgbColor.replacingOccurrences(of: " ", with: "")
+    
+    rgbColor = rgbColor
+        .replacingOccurrences(of: "(", with: "")
+        .replacingOccurrences(of: ")", with: "")
+    
+    
     
     let theColors = rgbColor.components(separatedBy: ",")
     let red = theColors[0] // 119
@@ -892,8 +901,6 @@ func getRGBCode(line: String) -> String {
     
     return "Color(red:\(red)/255.0, green:\(green)/255.0, blue:\(blue)/255.0)"
 }
-
-
 
 func removeTD(str: String) -> String {
     
